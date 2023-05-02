@@ -37,7 +37,7 @@ export const logoutUser = async (accessToken, dispatch, navigate) => {
             }
         });
         dispatch(logoutSuccess())
-        navigate("/")
+        navigate("/login")
     } catch (error) {
         dispatch(logoutFailed())
     }
@@ -110,7 +110,7 @@ export const deleteNation = async (accessToken, dispatch, id) => {
                 "Authorization": `Bearer ${accessToken}`
             }
         })
-        dispatch(deleteNationSuccess())
+        dispatch(deleteNationSuccess(id))
     } catch (error) {
         dispatch(deleteNationFailed())
     }

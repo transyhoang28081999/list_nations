@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const ListNations = () => {
     const user = useSelector(state => state.auth.login?.currentUser)
-    const nationList = useSelector(state => state.nations.nations?.allNations)
+    var nationList = useSelector(state => state.nations.nations?.allNations)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -19,6 +19,7 @@ const ListNations = () => {
 
     const handleDeleteNation =  (id) => {
         deleteNation(user?.token, dispatch, id)
+        
     }
     return (
         <>

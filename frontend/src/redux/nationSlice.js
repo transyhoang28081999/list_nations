@@ -64,8 +64,10 @@ const nationSlice = createSlice({
         deleteNationStart: state => {
             state.deleteNation.isLoading = true
         },
-        deleteNationSuccess: state => {
+        deleteNationSuccess: (state, action) => {
+            const id = action.payload
             state.deleteNation.isLoading = false
+            state.nations.allNations = state.nations.allNations.filter((item) => item.id !== id)
             state.deleteNation.error = false
         },
         deleteNationFailed: state => {
