@@ -1,4 +1,5 @@
 import axios from "axios"
+import { toast } from 'react-toastify'
 import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutStart, logoutSuccess, registerFailed, registerStart, registerSuccess } from "./authSlice"
 import { createOrUpdateNationFailed, createOrUpdateNationStart, createOrUpdateNationSuccess, deleteNationFailed, deleteNationStart, deleteNationSuccess, getNationsFailed, getNationsStart, getNationsSuccess, getSingleNationFailed, getSingleNationStart, getSingleNationSuccess } from "./nationSlice";
 
@@ -10,6 +11,7 @@ export const loginUser = async (user, dispatch, navigate) => {
     try {
         const res = await axios.post(BASE_AUTH_URL + "/authenticate", user)
         dispatch(loginSuccess(res.data))
+        toast.success("Log in successfully!")
         navigate("/")
     } catch (error) {
         dispatch(loginFailed())
@@ -21,6 +23,7 @@ export const registerUser = async (user, dispatch, navigate) => {
     try {
         await axios.post(BASE_AUTH_URL + "/register", user)
         dispatch(registerSuccess())
+        toast.success("Register successfully! Now, you should log in.")
         navigate("/login")
     } catch (error) {
         dispatch(registerFailed())
@@ -37,6 +40,7 @@ export const logoutUser = async (accessToken, dispatch, navigate) => {
             }
         });
         dispatch(logoutSuccess())
+        toast.success("Log out successfully!")
         navigate("/login")
     } catch (error) {
         dispatch(logoutFailed())
@@ -80,6 +84,7 @@ export const createNation = async (nation, accessToken, dispatch, navigate) => {
             }
         })
         dispatch(createOrUpdateNationSuccess())
+        toast.success("Created a new country!")
         navigate("/")
     } catch (error) {
         dispatch(createOrUpdateNationFailed())
@@ -95,6 +100,7 @@ export const updateNation = async (nation, accessToken, dispatch, navigate, id) 
             }
         })
         dispatch(createOrUpdateNationSuccess())
+        toast.success(nation.name + " has updated!")
         navigate('/')
     } catch (error) {
         dispatch(createOrUpdateNationFailed())
@@ -111,6 +117,7 @@ export const deleteNation = async (accessToken, dispatch, id) => {
             }
         })
         dispatch(deleteNationSuccess(id))
+        toast.success("Delete successfully!")
     } catch (error) {
         dispatch(deleteNationFailed())
     }

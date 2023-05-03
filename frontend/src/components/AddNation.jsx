@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { createNation, getSingleNation, updateNation } from '../redux/apiRequest'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -104,6 +104,7 @@ const AddNation = () => {
                     onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <button className='btn btn-success'>Submit</button>
+                <Link to="/" className='btn btn-warning _button'>Go Back</Link>
               </form>
             </div>
           </div>

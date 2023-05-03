@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getSingleNation } from '../redux/apiRequest'
 
 const Read = () => {
@@ -16,11 +16,13 @@ const Read = () => {
     getSingleNation(user?.token, dispatch, id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
+
   return (
     <>
       <div className="container-fluid">
         <h1>The information of {nation?.name}</h1>
-        <span>{nation?.description}</span>
+        <span>{nation?.description}</span><br />
+        <Link to="/" className='btn btn-success _button'>Go Back</Link>
       </div>
     </>
   )
