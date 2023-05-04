@@ -100,7 +100,7 @@ export const updateNation = async (nation, accessToken, dispatch, navigate, id) 
             }
         })
         dispatch(createOrUpdateNationSuccess())
-        toast.success(nation.name + " has updated!")
+        toast.success(nation.name + " has been updated!")
         navigate('/')
     } catch (error) {
         dispatch(createOrUpdateNationFailed())
