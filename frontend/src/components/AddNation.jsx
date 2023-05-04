@@ -19,7 +19,6 @@ const AddNation = () => {
   useEffect(() => {
     if (!user) navigate("/login")
     getSingleNation(user?.token, dispatch, id)
-    // setNation()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -28,7 +27,7 @@ const AddNation = () => {
       setName('')
       setPopulation()
       setGdp()
-      setDescription()
+      setDescription('')
       return
     }
     setName(nation?.name)
@@ -74,7 +73,9 @@ const AddNation = () => {
                     type="text"
                     placeholder="Enter country's name"
                     className='form-control'
-                    value={name}
+                    id='name'
+                    name='name'
+                    value={name || ''}
                     onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="form-group mb-2">
@@ -83,7 +84,9 @@ const AddNation = () => {
                     type="text"
                     placeholder="Enter population"
                     className='form-control'
-                    value={population}
+                    id='population'
+                    name='population'
+                    value={population || ''}
                     onChange={(e) => setPopulation(e.target.value)} />
                 </div>
                 <div className="form-group mb-2">
@@ -92,7 +95,9 @@ const AddNation = () => {
                     type="text"
                     placeholder="Enter the GDP"
                     className='form-control'
-                    value={gdp}
+                    id='gdp'
+                    name='gdp'
+                    value={gdp || ''}
                     onChange={(e) => setGdp(e.target.value)} />
                 </div>
                 <div className="form-group mb-2">
@@ -101,10 +106,12 @@ const AddNation = () => {
                     type="textarea"
                     placeholder="Description this country"
                     className='form-control'
-                    value={description}
+                    id='description'
+                    name='description'
+                    value={description || ''}
                     onChange={(e) => setDescription(e.target.value)} />
                 </div>
-                <button className='btn btn-success'>Submit</button>
+                <button type='submit' className='btn btn-success'>Submit</button>
                 <Link to="/" className='btn btn-warning _button'>Go Back</Link>
               </form>
             </div>
