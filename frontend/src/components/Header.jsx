@@ -14,7 +14,7 @@ const Header = () => {
     }
     return (
         <header>
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
                 <div className='container-fluid _header'>
                     <NavLink to="/" className="navbar-brand">Nations List Management</NavLink>
                     {user ? (
