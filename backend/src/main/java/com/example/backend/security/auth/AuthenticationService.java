@@ -32,9 +32,8 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
         
-        var savedUser = repository.save(user);
+                repository.save(user);
 
-        saveUserToken(savedUser, null);
         return AuthenticationResponse.builder().build();
     }
 
