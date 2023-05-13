@@ -43,7 +43,7 @@ public class AuthenticationService {
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        revokeAllUSerTokens(user);
+        revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
                 .name(user.getName())
@@ -51,7 +51,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    private void revokeAllUSerTokens(User user) {
+    private void revokeAllUserTokens(User user) {
         var validUserTokens = tokenRepository.findAllValidTokensByUser(user.getId());
         if (validUserTokens.isEmpty())
             return;
